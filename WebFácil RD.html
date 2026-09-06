@@ -1,1 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebFácil RD — Páginas web para tu negocio</title>
+<meta name="description" content="Páginas web rápidas y profesionales para negocios dominicanos, desde RD$2,000. Contáctanos por WhatsApp y la tienes lista en 24-48h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#101A33;
+    --navy2:#16234A;
+    --blue:#2E6BE0;
+    --blue-light:#5C93F0;
+    --red:#FF4D5E;
+    --orange:#FF9433;
+    --yellow:#FFC93C;
+    --green:#1FBF9E;
+    --purple:#8B5CF6;
+    --pink:#FF5DA2;
+    --paper:#FBFAF8;
+    --ink:#16181D;
+    --line:#E7E5E0;
+    --white:#FFFFFF;
+    --muted:#5E6472;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:"Lilita One",sans-serif;font-weight:400;letter-spacing:0.01em;}
+  p,li,span,a{font-family:"Plus Jakarta Sans",sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px;}
+  @media(max-width:600px){.wrap{padding:0 20px;}}
 
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* paint drip banner - the one bold visual moment */
+  .paint-strip{display:flex;width:100%;background:var(--paper);gap:3px;}
+  .paint-strip span{flex:1;border-bottom-left-radius:34px;border-bottom-right-radius:34px;}
+
+  /* header */
+  header{position:sticky;top:0;z-index:40;background:rgba(251,250,248,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .headrow{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1280px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo span{font-family:"Lilita One",sans-serif;font-size:20px;}
+  .logo-mark{transition:transform .25s ease;}
+  .logo:hover .logo-mark{transform:rotate(-6deg) scale(1.06);}
+  header .logo span{font-size:26px;}
+  header .logo{gap:14px;}
+  nav{display:flex;align-items:center;gap:30px;}
+  nav a.navlink{font-size:15px;font-weight:600;color:var(--navy);}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:10px;font-weight:700;font-size:15px;transition:transform .18s ease, box-shadow .18s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 24px -10px rgba(46,107,224,0.6);}
+  .btn-mango{background:var(--orange);color:#2A1400;box-shadow:0 10px 24px -10px rgba(255,148,51,0.55);}
+  .btn-ghost{border:2px solid var(--navy);color:var(--navy);}
+  .btn-lg{padding:16px 30px;font-size:16px;}
+  @media(max-width:760px){nav a.navlink{display:none;}}
+
+  /* hero */
+  .hero{position:relative;padding:80px 0 90px;overflow:hidden;}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:center;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--blue);background:rgba(46,107,224,0.09);padding:7px 14px;border-radius:20px;}
+  .eyebrow .dotlive{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:blink 1.8s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .hero h1{font-size:60px;line-height:1.08;color:var(--navy);margin-top:22px;}
+  @media(max-width:900px){.hero h1{font-size:46px;}}
+  @media(max-width:520px){.hero h1{font-size:34px;}}
+  .hero p{margin-top:22px;font-size:18px;color:var(--muted);max-width:46ch;}
+  .hero-cta{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
+
+  .mock{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(16,26,51,0.4);animation:rise .9s ease both;animation-delay:.15s;}
+  @keyframes rise{from{opacity:0;transform:translateY(24px) scale(.98);}to{opacity:1;transform:translateY(0) scale(1);}}
+  .mock-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#F1EFEA;border-bottom:1px solid var(--line);}
+  .dot{width:9px;height:9px;border-radius:50%;background:#CFCAC0;}
+  .mock-url{flex:1;background:#fff;border-radius:6px;padding:7px 12px;font-size:13px;color:var(--navy);border:1px solid var(--line);font-family:ui-monospace,monospace;white-space:nowrap;overflow:hidden;}
+  .mock-body{padding:30px 26px;display:flex;flex-direction:column;gap:12px;}
+  .mock-line{height:13px;border-radius:4px;background:#EFEDE8;}
+  .mock-block{height:80px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--blue-light));margin-top:6px;}
+  .mock-btn{margin-top:8px;width:130px;height:32px;border-radius:7px;background:var(--orange);}
+
+  /* stats */
+  .stats{background:var(--navy);}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:52px 0;text-align:center;}
+  @media(max-width:720px){.stats-grid{grid-template-columns:1fr;padding:40px 0;gap:32px;}}
+  .stat-num{font-family:"Lilita One",sans-serif;font-size:52px;color:#fff;line-height:1;}
+  .stat-num .unit{font-size:30px;}
+  .stat-label{margin-top:10px;font-size:14px;color:#9FB4D6;font-weight:600;}
+
+  .section{padding:96px 0;}
+  .section h2{font-size:36px;color:var(--navy);}
+  .section-sub{color:var(--muted);margin-top:12px;max-width:58ch;font-size:16px;}
+
+  /* why website cards */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+  @media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{background:#fff;border:1px solid var(--line);border-left:6px solid var(--c);border-radius:14px;padding:24px;}
+  .why-card h3{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:17px;color:var(--navy);}
+  .why-card p{font-size:14px;color:var(--muted);margin-top:9px;}
+  .why-tag{display:inline-block;font-size:12px;font-weight:700;color:var(--c);background:color-mix(in srgb, var(--c) 14%, white);padding:4px 10px;border-radius:20px;margin-bottom:12px;}
+
+  /* comparison */
+  .compare{margin-top:40px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+  .compare-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;align-items:center;}
+  .compare-row:not(:last-child){border-bottom:1px solid var(--line);}
+  .compare-row.head{background:var(--navy);color:#fff;font-weight:800;}
+  .compare-cell{padding:16px 18px;font-size:14px;}
+  .compare-row.head .compare-cell{font-family:"Lilita One",sans-serif;font-size:15px;}
+  .compare-cell.yes{color:var(--green);font-weight:800;text-align:center;}
+  .compare-cell.no{color:#C7CBD1;font-weight:800;text-align:center;}
+  .compare-cell.label{color:var(--navy);font-weight:600;}
+  @media(max-width:600px){.compare-row{grid-template-columns:1.2fr 0.8fr 0.8fr;}.compare-cell{padding:12px 10px;font-size:13px;}}
+
+  /* faq / skeptics */
+  .faq{margin-top:40px;display:flex;flex-direction:column;gap:12px;}
+  .faq-item{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .faq-q{width:100%;text-align:left;background:none;border:none;padding:20px 22px;font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:16px;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .faq-icon{flex:none;width:22px;height:22px;position:relative;}
+  .faq-icon::before,.faq-icon::after{content:"";position:absolute;background:var(--blue);border-radius:2px;}
+  .faq-icon::before{width:14px;height:2px;top:10px;left:4px;}
+  .faq-icon::after{width:2px;height:14px;top:4px;left:10px;transition:transform .2s ease;}
+  .faq-item.open .faq-icon::after{transform:rotate(90deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{padding:0 22px 20px;font-size:15px;color:var(--muted);max-width:70ch;}
+
+  /* portfolio */
+  .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+  @media(max-width:900px){.grid-cards{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.grid-cards{grid-template-columns:1fr;}}
+  .pf-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;}
+  .pf-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(16,26,51,0.3);}
+  .pf-bar{display:flex;gap:6px;padding:10px 14px;background:#F1EFEA;border-bottom:1px solid var(--line);}
+  .pf-body{padding:20px;}
+  .pf-name{font-weight:800;font-size:17px;color:var(--navy);}
+  .pf-desc{font-size:14px;color:var(--muted);margin-top:7px;}
+  .pf-link{display:inline-block;margin-top:14px;font-size:13px;color:var(--blue);font-weight:700;}
+
+  /* plans */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;align-items:stretch;}
+  @media(max-width:900px){.plans{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto;}}
+  .plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column;}
+  .plan-featured{border:2px solid var(--blue);position:relative;box-shadow:0 30px 56px -30px rgba(46,107,224,0.5);transform:scale(1.04);}
+  @media(max-width:900px){.plan-featured{transform:none;}}
+  .plan-tag{position:absolute;top:-14px;left:28px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;}
+  .plan h3{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:20px;color:var(--navy);}
+  .plan-price{font-family:"Lilita One",sans-serif;font-size:34px;color:var(--navy);margin-top:14px;}
+  .plan-price span{font-size:14px;font-weight:400;color:var(--muted);font-family:"Plus Jakarta Sans",sans-serif;}
+  .plan ul{margin-top:20px;flex:1;}
+  .plan li{list-style:none;font-size:14px;color:var(--muted);padding:8px 0;border-top:1px solid var(--line);}
+  .plan li:first-child{border-top:none;}
+  .plan .btn{margin-top:22px;justify-content:center;}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+  @media(max-width:720px){.steps{grid-template-columns:1fr;}}
+  .step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;}
+  .step-num{font-family:"Lilita One",sans-serif;font-size:26px;color:var(--blue);}
+  .step h3{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:17px;margin-top:12px;color:var(--navy);}
+  .step p{font-size:14px;color:var(--muted);margin-top:7px;}
+
+  .cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:22px;padding:64px 48px;text-align:center;}
+  @media(max-width:600px){.cta-band{padding:44px 24px;}}
+  .cta-band h2{color:#fff;font-size:34px;}
+  .cta-band p{color:#B9C9E4;margin-top:12px;font-size:16px;}
+  .cta-band .hero-cta{justify-content:center;margin-top:30px;}
+
+  footer{background:var(--navy);color:#DCE6F5;padding:50px 0 34px;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .foot-icons{display:flex;gap:14px;}
+  .icon-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background .18s ease, transform .18s ease;}
+  .icon-btn:hover{background:rgba(255,255,255,0.18);transform:translateY(-2px);}
+  .foot-small{font-size:13px;color:#8FA3C2;margin-top:26px;}
+
+  .fab{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(37,211,102,0.5);z-index:50;animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 12px 26px rgba(37,211,102,0.5);}50%{box-shadow:0 12px 26px rgba(37,211,102,0.8);}}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .fab,.eyebrow .dotlive,.mock{animation:none;}
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+  PARA AGREGAR MÁS PÁGINAS AL PORTAFOLIO: edita este array.
+============================================================ -->
+<script>
+  const SITES = [
+    { name: "Cobroya", url: "https://cobroya.do", desc: "Plataforma de cobros digitales" },
+    { name: "Cobroya · Inicio", url: "https://inicio.cobroya.do", desc: "Landing de bienvenida del producto" },
+    { name: "Stampo", url: "https://stampo-mvp-2026.vercel.app/", desc: "MVP de producto, desplegado en Vercel" },
+    // Agrega aquí tus próximos proyectos:
+    // { name: "Colmado La 27", url: "https://colmadola27.do", desc: "Sitio para colmado con catálogo" },
+  ];
+</script>
+
+<div class="paint-strip" aria-hidden="true">
+  <span style="background:var(--red);height:46px;"></span>
+  <span style="background:var(--orange);height:78px;"></span>
+  <span style="background:var(--yellow);height:38px;"></span>
+  <span style="background:var(--green);height:64px;"></span>
+  <span style="background:var(--blue);height:94px;"></span>
+  <span style="background:var(--purple);height:52px;"></span>
+  <span style="background:var(--pink);height:72px;"></span>
+  <span style="background:var(--green);height:40px;"></span>
+  <span style="background:var(--blue);height:60px;"></span>
+  <span style="background:var(--orange);height:86px;"></span>
+  <span style="background:var(--red);height:54px;"></span>
+  <span style="background:var(--yellow);height:70px;"></span>
+</div>
+
+<header>
+  <div class="headrow">
+    <div class="logo">
+      <svg class="logo-mark" width="50" height="50" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#2E6BE0"/><path d="M 33 42 L 42 62 L 50 45 L 58 62 L 67 42" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      <span>WebFácil <span style="color:var(--blue)">RD</span></span>
+    </div>
+    <nav>
+      <a class="navlink" href="#porque">Por qué</a>
+      <a class="navlink" href="#portafolio">Portafolio</a>
+      <a class="navlink" href="#planes">Planes</a>
+      <a class="btn btn-primary" href="https://wa.me/18095196889?text=Hola%2C%20vi%20WebF%C3%A1cil%20RD%20y%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer">Escríbenos</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dotlive"></span>Aceptando nuevos proyectos esta semana</div>
+      <h1>Tu negocio también merece estar en internet</h1>
+      <p>Hacemos tu página web profesional en 24–48 horas. Sin complicaciones, sin llamadas eternas: todo por WhatsApp.</p>
+      <div class="hero-cta">
+        <a class="btn btn-mango btn-lg" href="https://wa.me/18095196889?text=Hola%2C%20quiero%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer">Pedir mi página</a>
+        <a class="btn btn-ghost btn-lg" href="#porque">¿Por qué la necesito?</a>
+      </div>
+    </div>
+    <div class="mock">
+      <div class="mock-bar">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="mock-url" id="typedUrl">www.</div>
+      </div>
+      <div class="mock-body">
+        <div class="mock-line" style="width:60%"></div>
+        <div class="mock-line" style="width:38%"></div>
+        <div class="mock-block"></div>
+        <div class="mock-btn"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div><div class="stat-num"><span class="count" data-target="24">0</span><span class="unit">h</span></div><div class="stat-label">de entrega, no semanas</div></div>
+    <div><div class="stat-num"><span class="count" data-target="100">0</span><span class="unit">%</span></div><div class="stat-label">adaptado a celular</div></div>
+    <div><div class="stat-num"><span class="count" data-target="0">0</span></div><div class="stat-label">contratos ni letra pequeña</div></div>
+  </div>
+</div>
+
+<section class="section" id="porque">
+  <div class="wrap">
+    <h2>¿Por qué tu negocio necesita una página web?</h2>
+    <p class="section-sub">En América Latina hay más de 300 millones de personas comprando en internet, y esa cifra sigue subiendo. Tu negocio necesita estar donde la gente ya está buscando.</p>
+    <div class="why-grid">
+      <div class="why-card" style="--c:var(--blue)"><span class="why-tag">Google</span><h3>Te encuentran cuando te buscan</h3><p>Cuando alguien busca lo que vendes, tu página aparece — no solo cuando ya te siguen en redes sociales.</p></div>
+      <div class="why-card" style="--c:var(--green)"><span class="why-tag">24/7</span><h3>Nunca cierra</h3><p>Tu página sigue mostrando tu negocio mientras duermes, mientras trabajas, incluso si Instagram se cae.</p></div>
+      <div class="why-card" style="--c:var(--orange)"><span class="why-tag">Confianza</span><h3>Se ve más profesional</h3><p>Un negocio con página web propia transmite más seriedad que uno que solo tiene un perfil de redes.</p></div>
+      <div class="why-card" style="--c:var(--purple)"><span class="why-tag">Sin algoritmos</span><h3>No dependes de nadie</h3><p>Instagram decide a quién le muestra tus publicaciones. Tu página web la ve quien tú quieras, siempre.</p></div>
+      <div class="why-card" style="--c:var(--pink)"><span class="why-tag">Es tuya</span><h3>Nadie te la puede quitar</h3><p>Si tu cuenta se hackea o se cae, pierdes todo. Tu página web es tuya, para siempre.</p></div>
+      <div class="why-card" style="--c:var(--yellow)"><span class="why-tag">Vende sola</span><h3>Trabaja aunque tú no estés</h3><p>Mientras atiendes en el negocio, tu página sigue mostrando lo que vendes y cómo contactarte.</p></div>
+    </div>
+
+    <div class="compare">
+      <div class="compare-row head">
+        <div class="compare-cell">&nbsp;</div>
+        <div class="compare-cell" style="text-align:center;">Solo redes sociales</div>
+        <div class="compare-cell" style="text-align:center;">Con página web</div>
+      </div>
+      <div class="compare-row"><div class="compare-cell label">Aparece en Google</div><div class="compare-cell no">No</div><div class="compare-cell yes">Sí</div></div>
+      <div class="compare-row"><div class="compare-cell label">Disponible 24/7 sin depender de la app</div><div class="compare-cell no">No</div><div class="compare-cell yes">Sí</div></div>
+      <div class="compare-row"><div class="compare-cell label">Es tuya para siempre</div><div class="compare-cell no">No</div><div class="compare-cell yes">Sí</div></div>
+      <div class="compare-row"><div class="compare-cell label">Link fácil de compartir y recordar</div><div class="compare-cell no">No</div><div class="compare-cell yes">Sí</div></div>
+      <div class="compare-row"><div class="compare-cell label">Botón directo a tu WhatsApp</div><div class="compare-cell yes">Sí</div><div class="compare-cell yes">Sí</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <h2>¿Todavía tienes dudas?</h2>
+    <p class="section-sub">Es normal preguntarse si vale la pena. Aquí respondemos lo que más nos preguntan.</p>
+    <div class="faq" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">Ya tengo Instagram, ¿para qué quiero una página web?<span class="faq-icon"></span></button>
+        <div class="faq-a"><p>Instagram es para que te descubran. La página web es para que te crean y te contacten. Muchos negocios usan las dos cosas juntas: una no reemplaza a la otra, la complementan.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Mis clientes ya me escriben por WhatsApp, no necesito más<span class="faq-icon"></span></button>
+        <div class="faq-a"><p>Por eso el botón de WhatsApp está en toda la página. No la reemplaza: la hace más fácil de encontrar para la gente nueva que todavía no te conoce ni tiene tu número.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Es muy caro tener una página web<span class="faq-icon"></span></button>
+        <div class="faq-a"><p>Desde RD$2,000, una sola vez, cuesta menos que promocionar un post en Instagram durante una semana — y tu página se queda publicada de forma permanente.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">No sé nada de tecnología, ¿cómo la voy a mantener?<span class="faq-icon"></span></button>
+        <div class="faq-a"><p>No tienes que tocar nada. Nosotros la armamos y la publicamos. Si en el futuro quieres cambiar algo, nos escribes por WhatsApp y listo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Mi negocio es muy pequeño para eso<span class="faq-icon"></span></button>
+        <div class="faq-a"><p>Es justo al revés: los negocios pequeños son los que más se benefician, porque compiten contra negocios grandes que ya tienen su página web. Sin una, empiezas en desventaja.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="portafolio">
+  <div class="wrap">
+    <h2>Algunos proyectos</h2>
+    <p class="section-sub">Así se ven los sitios que hemos entregado. Toca cualquiera para verlo en vivo.</p>
+    <div class="grid-cards" id="pfGrid"></div>
+  </div>
+</section>
+
+<section class="section" id="planes" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <h2>Planes</h2>
+    <p class="section-sub">Precios claros. Sin letra pequeña.</p>
+    <div class="plans">
+      <div class="plan reveal">
+        <h3>Básico</h3>
+        <div class="plan-price">RD$2,000</div>
+        <ul>
+          <li>1 página (landing)</li>
+          <li>Publicada en internet en 24–48h</li>
+          <li>Adaptada a celular</li>
+          <li>Link tipo tunombre.vercel.app</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/18095196889?text=Quiero%20el%20plan%20B%C3%A1sico" target="_blank" rel="noopener noreferrer">Elegir plan</a>
+      </div>
+      <div class="plan plan-featured reveal">
+        <div class="plan-tag">El más pedido</div>
+        <h3>Con dominio propio</h3>
+        <div class="plan-price">RD$3,200<span> / primer año</span></div>
+        <ul>
+          <li>Todo lo del plan Básico</li>
+          <li>Dominio propio (tunegocio.do o .com)</li>
+          <li>Se puede encontrar en Google buscando tu negocio</li>
+          <li>Correo profesional opcional</li>
+        </ul>
+        <a class="btn btn-primary" href="https://wa.me/18095196889?text=Quiero%20el%20plan%20Con%20dominio" target="_blank" rel="noopener noreferrer">Elegir plan</a>
+      </div>
+      <div class="plan reveal">
+        <h3>Pro + visibilidad</h3>
+        <div class="plan-price">RD$4,500<span> / primer año</span></div>
+        <ul>
+          <li>Todo lo del plan Con dominio</li>
+          <li>Optimizada para aparecer en Google</li>
+          <li>Botón de WhatsApp directo</li>
+          <li>1 ronda de cambios al mes incluida</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/18095196889?text=Quiero%20el%20plan%20Pro" target="_blank" rel="noopener noreferrer">Elegir plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>Cómo funciona</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Hablamos por WhatsApp</h3><p>Nos cuentas qué vende tu negocio y qué quieres que la gente vea primero.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Armamos tu página</h3><p>La construimos con tu logo, tus fotos y tu información real.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>La publicamos</h3><p>Te mandamos el link listo para compartir en tus redes y con tus clientes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>¿Listo para tener tu página?</h2>
+      <p>Escríbenos ahora y la tienes lista en 24–48 horas.</p>
+      <div class="hero-cta">
+        <a class="btn btn-mango btn-lg" href="https://wa.me/18095196889?text=Hola%2C%20quiero%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="logo">
+        <svg class="logo-mark foot-logo" width="46" height="46" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/><path d="M 33 42 L 42 62 L 50 45 L 58 62 L 67 42" stroke="#101A33" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <span style="color:#fff;font-family:'Lilita One',sans-serif;font-size:26px;">WebFácil RD</span>
+      </div>
+      <div class="foot-icons">
+        <a class="icon-btn" href="https://www.instagram.com/webfacil.rd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a class="icon-btn" href="https://wa.me/18095196889?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.6.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.1.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-small">WebFácil RD — Páginas web para negocios dominicanos. Contacto directo por WhatsApp.</div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/18095196889?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.6 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.6.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.1.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+</a>
+
+<script>
+  const grid = document.getElementById('pfGrid');
+  SITES.forEach((site, i) => {
+    const card = document.createElement('a');
+    card.href = site.url;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    card.className = "pf-card reveal";
+    card.style.transitionDelay = (i * 90) + "ms";
+    card.innerHTML = `
+      <div class="pf-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <div class="pf-body">
+        <div class="pf-name">${site.name}</div>
+        <div class="pf-desc">${site.desc}</div>
+        <span class="pf-link">Ver sitio →</span>
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  const counters = document.querySelectorAll('.count');
+  let countersStarted = false;
+  function runCounters(){
+    if(countersStarted) return;
+    countersStarted = true;
+    counters.forEach(el => {
+      const target = parseInt(el.dataset.target, 10);
+      if(reduceMotion || target === 0){ el.textContent = target; return; }
+      const duration = 900;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.round(target * p);
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  const statsEl = document.querySelector('.stats');
+  if('IntersectionObserver' in window){
+    const statsIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting){ runCounters(); statsIo.disconnect(); } });
+    }, { threshold: 0.4 });
+    statsIo.observe(statsEl);
+  } else { runCounters(); }
+
+  const domains = ["www.tunegocio.do", "www.tucolmado.do", "www.tusalon.do", "www.tutienda.do"];
+  const el = document.getElementById('typedUrl');
+  let di = 0;
+  function typeLoop(){
+    const word = domains[di % domains.length];
+    let i = 0;
+    el.textContent = "";
+    const t = setInterval(() => {
+      el.textContent = word.slice(0, i+1);
+      i++;
+      if(i >= word.length){
+        clearInterval(t);
+        setTimeout(() => { di++; typeLoop(); }, 1400);
+      }
+    }, 65);
+  }
+  if(!reduceMotion){ typeLoop(); } else { el.textContent = domains[0]; }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + "px";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
